@@ -1,6 +1,8 @@
-CMakeFiles/CPU_simulator.dir/addi.cpp.o: \
- /home/lama/Desktop/Training/cpu/addi.cpp /usr/include/stdc-predef.h \
- /home/lama/Desktop/Training/cpu/addi.h /usr/include/c++/11/iostream \
+CMakeFiles/CPU_simulator.dir/exit.cpp.o: \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/exit.cpp \
+ /usr/include/stdc-predef.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/exit.h \
+ /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -146,12 +148,12 @@ CMakeFiles/CPU_simulator.dir/addi.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/lama/Desktop/Training/cpu/instruction.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_uninitialized.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/instruction.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/lama/Desktop/Training/cpu/rom.h \
- /home/lama/Desktop/Training/cpu/memory.h \
- /home/lama/Desktop/Training/cpu/cpu.h \
- /home/lama/Desktop/Training/cpu/ram.h
+ /home/lama/Desktop/Training/cpu/CPU_simulator/rom.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/memory.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/cpu.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/ram.h

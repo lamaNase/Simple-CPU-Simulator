@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lama/Desktop/Training/cpu
+CXX_INCLUDES = -I/home/lama/Desktop/Training/cpu/CPU_simulator
 
 CXX_FLAGS = -std=gnu++17
 

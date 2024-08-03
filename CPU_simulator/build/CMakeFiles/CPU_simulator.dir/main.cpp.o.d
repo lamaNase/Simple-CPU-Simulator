@@ -1,6 +1,6 @@
-CMakeFiles/CPU_simulator.dir/add.cpp.o: \
- /home/lama/Desktop/Training/cpu/add.cpp /usr/include/stdc-predef.h \
- /home/lama/Desktop/Training/cpu/add.h /usr/include/c++/11/iostream \
+CMakeFiles/CPU_simulator.dir/main.cpp.o: \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/main.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -146,12 +146,46 @@ CMakeFiles/CPU_simulator.dir/add.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/lama/Desktop/Training/cpu/instruction.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_uninitialized.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/cpu.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/instruction.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/lama/Desktop/Training/cpu/rom.h \
- /home/lama/Desktop/Training/cpu/memory.h \
- /home/lama/Desktop/Training/cpu/cpu.h \
- /home/lama/Desktop/Training/cpu/ram.h
+ /home/lama/Desktop/Training/cpu/CPU_simulator/rom.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/memory.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/ram.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/runner.h \
+ /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc /usr/include/string.h \
+ /usr/include/strings.h /usr/include/c++/11/algorithm \
+ /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
+ /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/algorithmfwd.h \
+ /usr/include/c++/11/bits/stl_heap.h \
+ /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/bits/uniform_int_dist.h \
+ /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/tuple \
+ /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
+ /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/unordered_map.h \
+ /usr/include/c++/11/bits/erase_if.h \
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/factory.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/jump.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/exit.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/add.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/addi.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/print.h \
+ /home/lama/Desktop/Training/cpu/CPU_simulator/set.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/lama/Desktop/Training/cpu
+# Install script for directory: /home/lama/Desktop/Training/cpu/CPU_simulator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lama/Desktop/Training/cpu/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lama/Desktop/Training/cpu/CPU_simulator/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
