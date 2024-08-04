@@ -1,7 +1,7 @@
 #include "runner.h"
 
-void Runner::execute(ROM* rom){
-	std::ifstream file("instructions.txt");
+void Runner::execute(ROM* rom, char* argv[]){
+	std::ifstream file(argv[1]);
 
 	if (!file.is_open()) {
 	        std::cerr << "Unable to open file" << std::endl;
