@@ -24,7 +24,7 @@ void Runner::execute(ROM* rom, char* argv[]){
 			items.push_back(item);
 		}
 		
-		if (!items.empty() && items.size() <= 4){
+		if (!items.empty() && items.size() <= (max_parameters + 1)){
 			std::string type = items.at(0);
 			// convert to lower case
 			std::transform(type.begin(), type.end(), type.begin(),
@@ -35,12 +35,12 @@ void Runner::execute(ROM* rom, char* argv[]){
 				Instruction* inst = Factory::createInst(type,params);
 				instructions[index] = inst;
 			} else {
-				std::cout << "Invalid instruction, skiped..." << std::endl;
-				continue;
+				std::cout<<"Invalid instruction at line "<< (index + 1) <<"\n";
+				exit(1);
 			}
 		} else {
-			std::cout << "Invalid instruction, skiped..." << std::endl;
-			continue;
+			std::cout<< "Invalid instruction at line " << (index + 1) << std::endl;
+			exit(1);
 		}
     		index++;
 	}

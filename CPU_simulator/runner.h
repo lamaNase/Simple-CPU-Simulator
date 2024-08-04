@@ -11,6 +11,8 @@
 #include "factory.h"
 #include "rom.h"
 
+#define max_parameters 3
+
 class Runner {
 public:
     // This function reads instructions from a file and flash them into the ROM
