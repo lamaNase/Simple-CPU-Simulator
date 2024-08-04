@@ -12,5 +12,10 @@ with an exception (out of range address).
 
 The following figure shows the class diagram of the design.
 
+<<<<<<< HEAD
 ![Alt text](/home/lama/Downloads/CPU_simulator.png)
+=======
+![CPU_simulator drawio](https://github.com/user-attachments/assets/705d07a0-c60e-4b73-a4ba-7f0aff4c4c0f)
+
+>>>>>>> origin/main
 
