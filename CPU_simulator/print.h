@@ -8,7 +8,7 @@
 class Print: public Instruction {
 public:
     Print (std::vector<int> params);
-    void execute(CPU* cpu,RAM* ram) override;
+    void execute(CPU* cpu) override;
     std::string getType() override;
     bool validate(std::vector<int> params) override;
 private:

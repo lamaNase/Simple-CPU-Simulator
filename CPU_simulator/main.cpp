@@ -3,14 +3,14 @@
 #include "runner.h"
 
 int main() {
-	CPU* cpu = new CPU();
-	
 	RAM* ram = new RAM(50);
 	ROM* rom = new ROM(50);
 	
+	CPU* cpu = new CPU(rom,ram);
+	
 	Runner::execute(rom);
 	
-	cpu->execute(rom,ram);
+	cpu->execute();
 	
 	return 0;
 }

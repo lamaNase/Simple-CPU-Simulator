@@ -12,7 +12,7 @@ class RAM;
 class Instruction {
 public:
     Instruction ();
-    void virtual execute(CPU* cpu,RAM* ram) = 0;
+    void virtual execute(CPU* cpu) = 0;
     bool virtual validate(std::vector<int> params) = 0;
     std::string virtual getType() = 0;
 private:

@@ -11,10 +11,10 @@ Print::Print (std::vector<int> params) {
 	}
 }
 
-void Print::execute(CPU* cpu,RAM* ram) {
+void Print::execute(CPU* cpu) {
 	std::cout << "\nExecuting print instruction..." << std::endl;
-	if (print_address >= 0 && print_address < ram->getSize()) {
-		int data = ram->read(this->print_address);
+	if (print_address >= 0 && print_address < cpu->getRAM_size()) {
+		int data = cpu->readRAM(this->print_address);
 		std::cout<<"Data will be printed at address = "<<this->print_address<< "\n";
 		std::cout << "Data: " << data << std::endl;
 		int pc = cpu->getPC() + 1;

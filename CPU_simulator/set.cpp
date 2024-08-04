@@ -12,10 +12,10 @@ Set::Set (std::vector<int> params) {
 	}
 }
 
-void Set::execute(CPU* cpu,RAM* ram) {
+void Set::execute(CPU* cpu) {
 	std::cout << "\nExecuting set instruction..." << std::endl;
-	if (dest >= 0 && dest < ram->getSize()) {
-		ram->write(this->dest,this->imm);
+	if (dest >= 0 && dest < cpu->getRAM_size()) {
+		cpu->writeRAM(this->dest,this->imm);
 		std::cout<<"Data = "<<this->imm<<" wrriteen at address: "<<this->dest<<"\n";
 		int pc = cpu->getPC() + 1;
 		cpu->setPC(pc);

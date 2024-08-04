@@ -11,9 +11,9 @@ Jump::Jump(std::vector<int> params) {
 	}
 }
 
-void Jump::execute(CPU* cpu,RAM* ram) {
+void Jump::execute(CPU* cpu) {
 	std::cout << "\nExecuting jump instruction..." << std::endl;
-	if (this->jump_address >= 0 && this->jump_address < ram->getSize()) {
+	if (this->jump_address >= 0 && this->jump_address < cpu->getROM_size()) {
 		cpu->setPC(this->jump_address);
 		std::cout << "New PC value is " << cpu->getPC() << "\n" << std::endl;
 	} else {

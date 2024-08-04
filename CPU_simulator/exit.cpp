@@ -9,7 +9,7 @@ Exit::Exit(std::vector<int> params) {
 	}
 }
 
-void Exit::execute(CPU* cpu,RAM* ram) {
+void Exit::execute(CPU* cpu) {
 	std::cout << "Executing exit instruction..." << std::endl;
 	cpu->setHalted_true();
 }
