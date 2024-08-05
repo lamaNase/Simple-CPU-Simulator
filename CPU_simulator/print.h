@@ -1,5 +1,4 @@
-#ifndef PRINT_H
-#define PRINT_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -7,13 +6,11 @@
 
 class Print: public Instruction {
 public:
-    Print (std::vector<int> params);
-    void execute(CPU* cpu) override;
+    Print (CPU* cpu);
+    void execute() override;
     std::string getType() override;
-    bool validate(std::vector<int> params) override;
+    bool validate(std::vector<std::string> params, int line) override;
 private:
     int print_address;
 };
-
-#endif // LIBRARY_H
 

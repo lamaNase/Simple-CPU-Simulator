@@ -1,18 +1,18 @@
 #include "factory.h"
 
-Instruction* Factory::createInst(std::string type, std::vector<int> params){
+Instruction* Factory::createInst(CPU* cpu, std::string type){
 	if (type == "jump" )
-		return new Jump(params);
+		return new Jump(cpu);
 	else if (type == "exit")
-		return new Exit(params);
+		return new Exit(cpu);
 	else if (type == "add")
-		return new Add(params);
+		return new Add(cpu);
 	else if (type == "addi")
-		return new Addi(params);
+		return new Addi(cpu);
 	else if (type == "print")
-		return new Print(params);
+		return new Print(cpu);
 	else if (type == "set")
-		return new Set(params);
+		return new Set(cpu);
 	else {
 		std::cout << "No instruction called " << type << std::endl;
 		exit(1);

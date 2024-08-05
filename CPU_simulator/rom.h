@@ -1,5 +1,4 @@
-#ifndef ROM_H
-#define ROM_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -7,16 +6,15 @@
 
 class Instruction;
 
-class ROM : public Memory{
+class ROM : public Memory<Instruction*> {
 public:
     ROM(int size);
-    Instruction* read(int address);
+    virtual ~ROM();
+    Instruction* read(int address) override;
     void flash(Instruction* instructions[]);
     bool empty;
 private:
     Instruction* instructions[MAX_SIZE];
     bool flashed;
 };
-
-#endif // LIBRARY_H
 

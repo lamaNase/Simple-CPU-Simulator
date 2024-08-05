@@ -1,5 +1,4 @@
-#ifndef ADD_H
-#define ADD_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -7,15 +6,13 @@
 
 class Add: public Instruction {
 public:
-    Add (std::vector<int> params);
-    void execute(CPU* cpu) override;
+    Add (CPU* cpu);
+    void execute() override;
     std::string getType() override;
-    bool validate(std::vector<int> params) override;
+    bool validate(std::vector<std::string> params, int line) override;
 private:
     int src1;
     int src2;
     int dest;
 };
-
-#endif // LIBRARY_H
 

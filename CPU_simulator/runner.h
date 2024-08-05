@@ -1,5 +1,4 @@
-#ifndef RUNNER_H
-#define RUNNER_H
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -16,10 +15,8 @@
 class Runner {
 public:
     // This function reads instructions from a file and flash them into the ROM
-    static void execute(ROM* rom, char* argv[]);
+    static void execute(ROM* rom, char* argv[], CPU* cpu);
     static std::vector<int> convertToIntegers(std::vector<std::string> items);
     static void initalize(Instruction* instructions[], int size);
 };
-
-#endif // BOOK_FACTORY_H
 

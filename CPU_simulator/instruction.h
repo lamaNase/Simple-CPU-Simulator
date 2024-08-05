@@ -1,23 +1,23 @@
-#ifndef INSTRUCTION_H
-#define INSTRUCTION_H
+#pragma once
 
 #include <iostream>
 #include <string>
 #include "vector"
-#include "rom.h"
+#include "cpu.h"
+#include "exception.h"
 
-class CPU;
-class RAM;
 
 class Instruction {
 public:
-    Instruction ();
-    void virtual execute(CPU* cpu) = 0;
-    bool virtual validate(std::vector<int> params) = 0;
+    Instruction (CPU* cpu);
+    virtual ~Instruction() = default;
+    void virtual execute() = 0;
+    bool virtual validate(std::vector<std::string> params,int line) = 0;
     std::string virtual getType() = 0;
+    void virtual update_pc();
+protected:
+    CPU* cpu;
 private:
     std::string type;
 };
-
-#endif // LIBRARY_H
 

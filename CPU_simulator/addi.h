@@ -1,5 +1,4 @@
-#ifndef ADDI_H
-#define ADDI_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -7,15 +6,13 @@
 
 class Addi: public Instruction {
 public:
-    Addi (std::vector<int> params);
-    void execute(CPU* cpu) override;
+    Addi (CPU* cpu);
+    void execute() override;
     std::string getType() override;
-    bool validate(std::vector<int> params) override;
+    bool validate(std::vector<std::string> params, int line) override;
 private:
     int src1;
     int imm;
     int dest;
 };
-
-#endif // LIBRARY_H
 

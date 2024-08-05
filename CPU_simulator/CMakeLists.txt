@@ -14,7 +14,6 @@ include_directories(${PROJECT_SOURCE_DIR})
 set(SOURCES
     main.cpp
     cpu.cpp
-    memory.cpp
     ram.cpp
     rom.cpp
     instruction.cpp
@@ -26,6 +25,7 @@ set(SOURCES
     print.cpp
     set.cpp
     runner.cpp
+    exception.cpp
 )
 
 # Add executable

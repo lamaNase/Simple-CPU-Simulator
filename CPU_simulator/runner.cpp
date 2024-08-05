@@ -1,6 +1,6 @@
 #include "runner.h"
 
-void Runner::execute(ROM* rom, char* argv[]){
+void Runner::execute(ROM* rom, char* argv[], CPU* cpu){
 	std::ifstream file(argv[1]);
 
 	if (!file.is_open()) {
@@ -9,7 +9,7 @@ void Runner::execute(ROM* rom, char* argv[]){
 	}
 	
 	Instruction* instructions[rom->getSize()];
-	initalize(instructions,rom->getSize());
+	//initalize(instructions,rom->getSize());
 	std::string line;
 	int index = 0;
 	bool empty = true;
@@ -23,34 +23,28 @@ void Runner::execute(ROM* rom, char* argv[]){
 		while(iss >> item) { // spliting on spaces
 			items.push_back(item);
 		}
+		std::string type = items.at(0);
+		// convert to lower case
+		std::transform(type.begin(), type.end(), type.begin(),
+			[](unsigned char c){ return std::tolower(c); });
 		
-		if (!items.empty() && items.size() <= (max_parameters + 1)){
-			std::string type = items.at(0);
-			// convert to lower case
-			std::transform(type.begin(), type.end(), type.begin(),
-				[](unsigned char c){ return std::tolower(c); });
-			
-			std::vector<int> params = convertToIntegers(items);
-			if (!params.empty() || type == "exit") {
-				Instruction* inst = Factory::createInst(type,params);
-				instructions[index] = inst;
-			} else {
-				std::cout<<"Invalid instruction at line "<< (index + 1) <<"\n";
-				exit(1);
-			}
-		} else {
-			std::cout<< "Invalid instruction at line " << (index + 1) << std::endl;
-			exit(1);
-		}
+		Instruction* inst = Factory::createInst(cpu,type);
+		inst->validate(items,(index + 1));
+		instructions[index] = inst;
     		index++;
 	}
 	
 	file.close();
 	if (empty){
-		std::cout << "File is empty...\n";
-		exit(1);
+		std::string msg =  "File is empty...\n";
+		throw InstructionValidationException(msg);
 	}
+	
 	rom->flash(instructions);
+	
+	for (int i = 0; i < rom->getSize(); ++i) {
+        	delete instructions[i]; // Free the memory allocated for each instruction
+    	}
 	
 }
 
@@ -61,10 +55,8 @@ std::vector<int> Runner::convertToIntegers(std::vector<std::string> items){
 			int num = std::stoi(items.at(i));
 			values.push_back(num);
 		} catch (const std::invalid_argument &e) {
-			std::cout << "Invalid instruction, skiped..." << std::endl;
 			return {};
 		} catch (const std::out_of_range &e) {
-			std::cout << "Invalid instruction, skiped..." << std::endl;
 			return {};
 		}
 	}

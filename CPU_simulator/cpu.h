@@ -1,9 +1,7 @@
-#ifndef CPU_H
-#define CPU_H
+#pragma once
 
 #include <iostream>
 #include <string>
-#include "instruction.h"
 #include "rom.h"
 #include "ram.h"
 
@@ -15,11 +13,8 @@ public:
     void setHalted_true();
     void execute();
     void fetch_instructions();
-    void writeRAM(int address, int data);
-    int readRAM(int address);
-    Instruction* readROM(int address);
-    int getRAM_size();
-    int getROM_size();
+    RAM* getRAM();
+    ROM* getROM();
 
 private:
     int PC;
@@ -27,6 +22,3 @@ private:
     ROM* rom;
     RAM* ram;
 };
-
-#endif // LIBRARY_H
-

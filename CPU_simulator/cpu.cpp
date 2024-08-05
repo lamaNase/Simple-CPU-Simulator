@@ -1,4 +1,5 @@
 #include "cpu.h"
+#include "instruction.h"
 
 CPU::CPU(ROM* rom, RAM* ram) {
 	this->PC = 0;
@@ -12,6 +13,11 @@ int CPU::getPC() {
 }
 
 void CPU::setPC(int PC) {
+	if (PC < 0 || PC >= this->rom->getSize()){
+		std::string msg = "PC address ";
+		msg += std::to_string(PC) + " goes out of range\n";
+		throw InstructionValidationException(msg);
+	}
 	this->PC = PC;
 }
 
@@ -31,27 +37,15 @@ void CPU::execute() {
 }
 
 void CPU::fetch_instructions(){
-	Instruction* instruction = readROM(this->PC);
-	instruction->execute(this);
+	Instruction* instruction = this->rom->read(this->PC);
+	instruction->execute();
 }
 
-void CPU::writeRAM(int address, int data) {
-	this->ram->write(address,data);
+RAM* CPU::getRAM() {
+	return this->ram;
 }
 
-int CPU::readRAM(int address) {
-	return this->ram->read(address);
-}
-
-Instruction* CPU::readROM(int address) {
-	return this->rom->read(address);
-}
-
-int CPU::getRAM_size() {
-	return this->ram->getSize();
-}
-
-int CPU::getROM_size() {
-	return this->rom->getSize();
-}   
+ROM* CPU::getROM() {
+	return this->rom;
+}  
 

@@ -1,39 +1,21 @@
 #include "addi.h"
 #include "cpu.h"
+#include "runner.h"
 
-Addi::Addi (std::vector<int> params) {
-	if (validate(params)){
-		this->src1 = params.at(0);
-		this->imm = params.at(1);
-		this->dest = params.at(2);
-	} else {
-		std::cout << "Invalid instruction syntax...\n";
-		std::cout << "Addi instruction taskes only 3 parameters\n";
-		exit(1);
-	}
-}
+Addi::Addi (CPU* cpu) : Instruction(cpu) {}
 
-void Addi::execute(CPU* cpu) {
+void Addi::execute() {
 	std::cout << "\nExecuting addi instruction...\n";
-	if (src1 >= 0 && src1 < cpu->getRAM_size() && dest >= 0 && dest < cpu->getRAM_size()){
-		int operand = cpu->readRAM(this->src1); 
-		std::cout<< "operand 1 = " << operand << " at address: " << this->src1 << "\n";
-		std::cout << "operand 2 = " << this->imm << " immediate value" << "\n";
-		int result = operand + this->imm;
-		std::cout << operand << " + " << this->imm << " = " << result << std::endl;
-		cpu->writeRAM(this->dest,result);	
-		std::cout<< "Result stored at address: " << this->dest << "\n" << std::endl;
-		int pc = cpu->getPC() + 1;
-		cpu->setPC(pc);
-	} else {
-		if (src1 < 0 || src1 > cpu->getRAM_size()) {
-			std::cout << "Address 1: " << src1 <<", out of range\n";
-			exit(1);
-		} else if (dest < 0 || dest > cpu->getRAM_size()) {
-			std::cout << "Destination address: " << dest <<", out of range\n";
-			exit(1);
-		}
-	}
+
+	int operand = this->cpu->getRAM()->read(this->src1); 
+	std::cout<< "operand 1 = " << operand << " at address: " << this->src1 << "\n";
+	std::cout << "operand 2 = " << this->imm << " immediate value" << "\n";
+	int result = operand + this->imm;
+	std::cout << operand << " + " << this->imm << " = " << result << std::endl;
+	this->cpu->getRAM()->write(this->dest,result);	
+	std::cout<< "Result stored at address: " << this->dest << "\n" << std::endl;
+	update_pc();
+	
 	std::cout << "=====================================\n" << std::endl;
 }
 
@@ -41,8 +23,27 @@ std::string Addi::getType() {
 	return "addi";
 }
 
-bool Addi::validate(std::vector<int> params){
-	if (params.size() == 3)
-		return true;
-	return false;
+bool Addi::validate(std::vector<std::string> params, int line){
+	if (params.size() != 4) {
+		std::string msg = "Line ";
+		msg += std::to_string(line) + ": ";
+		for (int i = 0; i < params.size(); i++)
+			msg += params.at(i) + " ";
+		msg += "\nADDi instruction taks three parameters\n";
+		throw InstructionValidationException(msg);
+	} else {
+		std::vector<int> operands = Runner::convertToIntegers(params);
+		if (operands.empty()){
+			std::string msg = "Line ";
+			msg += std::to_string(line) + ": ";
+			for (int i = 0; i < params.size(); i++)
+				msg += params.at(i) + " ";
+			msg += "\nInvalid operand (it must be integer)\n";
+			throw InstructionValidationException(msg);
+		}
+		this->src1 = operands.at(0);
+		this->imm  = operands.at(1);
+		this->dest = operands.at(2);
+	}
+	return true;
 }

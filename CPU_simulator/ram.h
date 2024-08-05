@@ -1,18 +1,15 @@
-#ifndef RAM_H
-#define ROM_H
+#pragma once
 
 #include <iostream>
 #include <string>
 #include "memory.h"
 
-class RAM : public Memory{
+class RAM : public Memory<int>{
 public:
     RAM(int size);
-    int read(int address);
+    int read(int address) override;
     void write(int address, int data);
 private:
-    int data[MAX_SIZE];
+    std::unique_ptr<int[]> data;
 };
-
-#endif // LIBRARY_H
 

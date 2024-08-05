@@ -1,5 +1,4 @@
-#ifndef FACTORY_H
-#define FACTORY_H
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -14,8 +13,6 @@
 
 class Factory {
 public:
-    static Instruction* createInst(std::string type, std::vector<int> params);
+    static Instruction* createInst(CPU* cpu,std::string type);
 };
-
-#endif // BOOK_FACTORY_H
 

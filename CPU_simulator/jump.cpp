@@ -1,25 +1,13 @@
 #include "jump.h"
 #include "cpu.h"
+#include "runner.h"
 
-Jump::Jump(std::vector<int> params) {
-	if (validate(params))
-		this->jump_address = params.at(0);
-	else {
-		std::cout << "Invalid instruction syntax...\n";
-		std::cout << "Jump instruction taskes only one parameter\n";
-		exit(1);
-	}
-}
+Jump::Jump(CPU* cpu) : Instruction(cpu) {}
 
-void Jump::execute(CPU* cpu) {
+void Jump::execute() {
 	std::cout << "\nExecuting jump instruction..." << std::endl;
-	if (this->jump_address >= 0 && this->jump_address < cpu->getROM_size()) {
-		cpu->setPC(this->jump_address);
-		std::cout << "New PC value is " << cpu->getPC() << "\n" << std::endl;
-	} else {
-		std::cout << "Address out of range\n";
-		exit(1);
-	}
+	this->update_pc();
+	std::cout << "New PC value is " << this->cpu->getPC() << "\n" << std::endl;
 	std::cout << "=====================================\n" << std::endl;
 } 
 
@@ -27,8 +15,29 @@ std::string Jump::getType() {
 	return "jump";
 }
 
-bool Jump::validate(std::vector<int> params){
-	if (params.size() == 1)
-		return true;
-	return false;
+bool Jump::validate(std::vector<std::string> params, int line){
+	if (params.size() != 2) {
+		std::string msg = "Line ";
+		msg += std::to_string(line) + ": ";
+		for (int i = 0; i < params.size(); i++)
+			msg += params.at(i) + " ";
+		msg += "\nJump instruction taks one parameter\n";
+		throw InstructionValidationException(msg);
+	} else {
+		std::vector<int> operands = Runner::convertToIntegers(params);
+		if (operands.empty()){
+			std::string msg = "Line ";
+			msg += std::to_string(line) + ": ";
+			for (int i = 0; i < params.size(); i++)
+				msg += params.at(i) + " ";
+			msg += "\nInvalid operand (it must be integer)\n";
+			throw InstructionValidationException(msg);
+		}
+		this->jump_address = operands.at(0);
+	}
+	return true;
+}
+
+void Jump::update_pc() {
+	this->cpu->setPC(this->jump_address);
 }

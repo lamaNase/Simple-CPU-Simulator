@@ -1,5 +1,4 @@
-#ifndef EXIT_H
-#define EXIT_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -7,13 +6,11 @@
 
 class Exit: public Instruction {
 public:
-    Exit (std::vector<int> params);
-    void execute(CPU* cpu) override;
+    Exit (CPU* cpu);
+    void execute() override;
     std::string getType() override;
-    bool validate(std::vector<int> params) override;
+    bool validate(std::vector<std::string> params, int line) override;
 private:
     
 };
-
-#endif // LIBRARY_H
 
