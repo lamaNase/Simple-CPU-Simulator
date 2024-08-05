@@ -12,7 +12,8 @@ with an exception (out of range address).
 
 ## Class Diagram 📊
 
-![CPU_simulator](https://github.com/user-attachments/assets/45039993-179b-41f4-8ed0-0278040d1e4f)
+![CPU_simulator(1)](https://github.com/user-attachments/assets/59ec9bb3-18c8-47a1-b8f3-cd7538385fbe)
+
 
 ## CPU Class 🖥️
   This class represents the main CPU of our simulator that has
