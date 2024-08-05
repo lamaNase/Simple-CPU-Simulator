@@ -13,6 +13,6 @@
 
 class Factory {
 public:
-    static Instruction* createInst(CPU* cpu,std::string type);
+    static std::shared_ptr<Instruction> createInst(std::shared_ptr<CPU> cpu,std::string type);
 };
 

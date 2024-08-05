@@ -9,14 +9,14 @@
 
 class Instruction {
 public:
-    Instruction (CPU* cpu);
+    Instruction (std::shared_ptr<CPU> cpu);
     virtual ~Instruction() = default;
     void virtual execute() = 0;
     bool virtual validate(std::vector<std::string> params,int line) = 0;
     std::string virtual getType() = 0;
     void virtual update_pc();
 protected:
-    CPU* cpu;
+    std::shared_ptr<CPU> cpu;
 private:
     std::string type;
 };

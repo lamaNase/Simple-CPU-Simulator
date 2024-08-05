@@ -6,7 +6,7 @@
 
 class Add: public Instruction {
 public:
-    Add (CPU* cpu);
+    Add (std::shared_ptr<CPU> cpu);
     void execute() override;
     std::string getType() override;
     bool validate(std::vector<std::string> params, int line) override;

@@ -10,6 +10,6 @@ public:
     int read(int address) override;
     void write(int address, int data);
 private:
-    std::unique_ptr<int[]> data;
+    std::unique_ptr<int> data[MAX_SIZE];
 };
 

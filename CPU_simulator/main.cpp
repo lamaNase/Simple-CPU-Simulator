@@ -11,10 +11,10 @@ int main(int argc, char* argv[]) {
 	}
 
 	try {
-		RAM* ram = new RAM(50);
-		ROM* rom = new ROM(50);
-		
-		CPU* cpu = new CPU(rom,ram);
+		std::shared_ptr<RAM> ram = std::make_shared<RAM>(50);
+		std::shared_ptr<ROM> rom = std::make_shared<ROM>(50);
+	
+		std::shared_ptr<CPU> cpu = std::make_shared<CPU>(rom,ram);
 		
 		Runner::execute(rom,argv,cpu);
 		

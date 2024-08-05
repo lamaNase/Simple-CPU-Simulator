@@ -7,18 +7,18 @@
 
 class CPU {
 public:
-    CPU(ROM* rom, RAM* ram);
+    CPU(std::shared_ptr<ROM> rom, std::shared_ptr<RAM> ram);
     int getPC();
     void setPC(int PC);
     void setHalted_true();
     void execute();
     void fetch_instructions();
-    RAM* getRAM();
-    ROM* getROM();
+    std::shared_ptr<RAM> getRAM();
+    std::shared_ptr<ROM> getROM();
 
 private:
     int PC;
     bool halted;
-    ROM* rom;
-    RAM* ram;
+    std::shared_ptr<ROM> rom;
+    std::shared_ptr<RAM> ram;
 };

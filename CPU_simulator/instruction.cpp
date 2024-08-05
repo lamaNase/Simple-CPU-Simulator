@@ -1,7 +1,7 @@
 #include "instruction.h"
 #include "cpu.h"
 
-Instruction::Instruction(CPU* cpu) {
+Instruction::Instruction(std::shared_ptr<CPU> cpu) {
 	this->cpu = cpu;
 }
 

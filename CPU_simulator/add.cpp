@@ -2,7 +2,7 @@
 #include "cpu.h"
 #include "runner.h"
 
-Add::Add (CPU* cpu) : Instruction(cpu) {}
+Add::Add (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Add::execute() {
 	std::cout << "\nExecuting add instruction..." << std::endl; 

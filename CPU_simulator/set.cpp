@@ -2,7 +2,7 @@
 #include "cpu.h"
 #include "runner.h"
 
-Set::Set (CPU* cpu) : Instruction(cpu) {}
+Set::Set (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Set::execute() {
 	std::cout << "\nExecuting set instruction..." << std::endl;

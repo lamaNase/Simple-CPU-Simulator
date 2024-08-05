@@ -15,8 +15,7 @@
 class Runner {
 public:
     // This function reads instructions from a file and flash them into the ROM
-    static void execute(ROM* rom, char* argv[], CPU* cpu);
+    static void execute(std::shared_ptr<ROM> rom, char* argv[], std::shared_ptr<CPU> cpu);
     static std::vector<int> convertToIntegers(std::vector<std::string> items);
-    static void initalize(Instruction* instructions[], int size);
 };
 

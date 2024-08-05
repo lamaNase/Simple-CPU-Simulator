@@ -6,15 +6,12 @@
 
 class Instruction;
 
-class ROM : public Memory<Instruction*> {
+class ROM : public Memory <std::shared_ptr<Instruction>> {
 public:
     ROM(int size);
-    virtual ~ROM();
-    Instruction* read(int address) override;
-    void flash(Instruction* instructions[]);
-    bool empty;
+    std::shared_ptr<Instruction> read(int address) override;
+    void flash(std::shared_ptr<Instruction> instructions[]);
 private:
-    Instruction* instructions[MAX_SIZE];
+    std::shared_ptr<Instruction> instructions[MAX_SIZE];
     bool flashed;
 };
-

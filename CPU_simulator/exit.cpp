@@ -1,7 +1,7 @@
 #include "exit.h"
 #include "cpu.h"
 
-Exit::Exit(CPU* cpu) : Instruction(cpu) {}
+Exit::Exit(std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Exit::execute() {
 	std::cout << "Executing exit instruction..." << std::endl;

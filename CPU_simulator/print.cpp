@@ -2,7 +2,7 @@
 #include "cpu.h"
 #include "runner.h"
 
-Print::Print (CPU* cpu) : Instruction(cpu) {}
+Print::Print (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Print::execute() {
 	std::cout << "\nExecuting print instruction..." << std::endl;

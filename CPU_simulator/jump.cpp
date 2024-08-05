@@ -2,7 +2,7 @@
 #include "cpu.h"
 #include "runner.h"
 
-Jump::Jump(CPU* cpu) : Instruction(cpu) {}
+Jump::Jump(std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Jump::execute() {
 	std::cout << "\nExecuting jump instruction..." << std::endl;

@@ -1,7 +1,7 @@
 #include "cpu.h"
 #include "instruction.h"
 
-CPU::CPU(ROM* rom, RAM* ram) {
+CPU::CPU(std::shared_ptr<ROM> rom, std::shared_ptr<RAM> ram) {
 	this->PC = 0;
 	this->halted = false;
 	this->rom = rom;
@@ -26,26 +26,21 @@ void CPU::setHalted_true() {
 }
 
 void CPU::execute() {
-	if (rom->empty == true) {
-		std::cout << "No instructions to execute" << std::endl;
-		exit(1);
-	}
 	while (this->halted == false)
 		fetch_instructions();
 	std::cout << "Program ended..." << std::endl;
-	exit(1);
 }
 
 void CPU::fetch_instructions(){
-	Instruction* instruction = this->rom->read(this->PC);
+	std::shared_ptr<Instruction> instruction = this->rom->read(this->PC);
 	instruction->execute();
 }
 
-RAM* CPU::getRAM() {
+std::shared_ptr<RAM> CPU::getRAM() {
 	return this->ram;
 }
 
-ROM* CPU::getROM() {
+std::shared_ptr<ROM> CPU::getROM() {
 	return this->rom;
 }  
 

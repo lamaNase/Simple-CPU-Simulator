@@ -1,18 +1,18 @@
 #include "factory.h"
 
-Instruction* Factory::createInst(CPU* cpu, std::string type){
+std::shared_ptr<Instruction> Factory::createInst(std::shared_ptr<CPU> cpu, std::string type){
 	if (type == "jump" )
-		return new Jump(cpu);
+		return std::make_shared<Jump>(cpu);
 	else if (type == "exit")
-		return new Exit(cpu);
+		return std::make_shared<Exit>(cpu);
 	else if (type == "add")
-		return new Add(cpu);
+		return std::make_shared<Add>(cpu);
 	else if (type == "addi")
-		return new Addi(cpu);
+		return std::make_shared<Addi>(cpu);
 	else if (type == "print")
-		return new Print(cpu);
+		return std::make_shared<Print>(cpu);
 	else if (type == "set")
-		return new Set(cpu);
+		return std::make_shared<Set>(cpu);
 	else {
 		std::cout << "No instruction called " << type << std::endl;
 		exit(1);

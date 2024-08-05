@@ -1,6 +1,6 @@
 #include "runner.h"
 
-void Runner::execute(ROM* rom, char* argv[], CPU* cpu){
+void Runner::execute(std::shared_ptr<ROM> rom, char* argv[], std::shared_ptr<CPU> cpu){
 	std::ifstream file(argv[1]);
 
 	if (!file.is_open()) {
@@ -8,8 +8,10 @@ void Runner::execute(ROM* rom, char* argv[], CPU* cpu){
 	        exit(1);
 	}
 	
-	Instruction* instructions[rom->getSize()];
-	//initalize(instructions,rom->getSize());
+	std::shared_ptr<Instruction> instructions[rom->getSize()];
+	for (int i = 0; i < rom->getSize(); ++i) {
+        	instructions[i] = nullptr;
+    	}
 	std::string line;
 	int index = 0;
 	bool empty = true;
@@ -28,7 +30,7 @@ void Runner::execute(ROM* rom, char* argv[], CPU* cpu){
 		std::transform(type.begin(), type.end(), type.begin(),
 			[](unsigned char c){ return std::tolower(c); });
 		
-		Instruction* inst = Factory::createInst(cpu,type);
+		std::shared_ptr<Instruction> inst = Factory::createInst(cpu,type);
 		inst->validate(items,(index + 1));
 		instructions[index] = inst;
     		index++;
@@ -41,10 +43,6 @@ void Runner::execute(ROM* rom, char* argv[], CPU* cpu){
 	}
 	
 	rom->flash(instructions);
-	
-	for (int i = 0; i < rom->getSize(); ++i) {
-        	delete instructions[i]; // Free the memory allocated for each instruction
-    	}
 	
 }
 
@@ -61,11 +59,5 @@ std::vector<int> Runner::convertToIntegers(std::vector<std::string> items){
 		}
 	}
 	return values;
-}
-
-void Runner::initalize(Instruction* instructions[], int size) {
-	for (int i = 0; i < size; i++){
-		instructions[i] = nullptr;
-	}
 }
 

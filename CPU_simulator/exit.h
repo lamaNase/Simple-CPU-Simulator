@@ -6,7 +6,7 @@
 
 class Exit: public Instruction {
 public:
-    Exit (CPU* cpu);
+    Exit (std::shared_ptr<CPU> cpu);
     void execute() override;
     std::string getType() override;
     bool validate(std::vector<std::string> params, int line) override;
