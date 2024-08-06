@@ -4,7 +4,7 @@
 Exit::Exit(std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Exit::execute() {
-	std::cout << "Executing exit instruction..." << std::endl;
+	std::cout << "Executing Line: " << this->line << " -> exit" << std::endl;
 	this->cpu->setHalted_true();
 }
 
@@ -20,5 +20,6 @@ bool Exit::validate(std::vector<std::string> params, int line){
 		msg += "\nExit instruction taks zero parameters\n";
 		throw InstructionValidationException(msg);
 	}
+	this->line = line;
 	return true;
 }

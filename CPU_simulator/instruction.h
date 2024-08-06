@@ -15,7 +15,9 @@ public:
     bool virtual validate(std::vector<std::string> params,int line) = 0;
     std::string virtual getType() = 0;
     void virtual update_pc();
+protected:
     std::shared_ptr<CPU> cpu;
+    int line;
 private:
     std::string type;
 };

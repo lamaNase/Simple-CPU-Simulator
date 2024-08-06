@@ -5,7 +5,8 @@
 Set::Set (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Set::execute() {
-	std::cout << "\nExecuting set instruction..." << std::endl;
+	std::cout << "\nExecuting Line: " << this->line <<
+		" -> set " << dest << " " << imm << std::endl;
 		
 	cpu->getRAM()->write(this->dest,this->imm);
 	std::cout<<"Data = "<<this->imm<<" wrriteen at address: "<<this->dest<<"\n";
@@ -39,5 +40,6 @@ bool Set::validate(std::vector<std::string> params, int line){
 		this->dest = operands.at(0);
 		this->imm = operands.at(1);
 	}
+	this->line = line;
 	return true;
 }

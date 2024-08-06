@@ -5,7 +5,8 @@
 Addi::Addi (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Addi::execute() {
-	std::cout << "\nExecuting addi instruction...\n";
+	std::cout << "\nExecuting Line: " << this->line <<
+		" -> ADDi " << src1 << " " << imm << " " << dest << std::endl;
 
 	int operand = this->cpu->getRAM()->read(this->src1); 
 	std::cout<< "operand 1 = " << operand << " at address: " << this->src1 << "\n";
@@ -45,5 +46,6 @@ bool Addi::validate(std::vector<std::string> params, int line){
 		this->imm  = operands.at(1);
 		this->dest = operands.at(2);
 	}
+	this->line = line;
 	return true;
 }

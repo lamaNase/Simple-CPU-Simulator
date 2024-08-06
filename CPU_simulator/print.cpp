@@ -5,7 +5,8 @@
 Print::Print (std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Print::execute() {
-	std::cout << "\nExecuting print instruction..." << std::endl;
+	std::cout << "\nExecuting Line: " << this->line <<
+		" -> print " << this->print_address << std::endl;
 	
 	int data = this->cpu->getRAM()->read(this->print_address);
 	std::cout<<"Data will be printed at address = "<<this->print_address<< "\n";
@@ -39,5 +40,6 @@ bool Print::validate(std::vector<std::string> params, int line){
 		}
 		this->print_address = operands.at(0);
 	}
+	this->line = line;
 	return true;
 }

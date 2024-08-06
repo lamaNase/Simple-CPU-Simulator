@@ -5,7 +5,8 @@
 Jump::Jump(std::shared_ptr<CPU> cpu) : Instruction(cpu) {}
 
 void Jump::execute() {
-	std::cout << "\nExecuting jump instruction..." << std::endl;
+	std::cout << "\nExecuting Line: " << this->line << 
+		" -> jump "<< this->jump_address << std::endl;
 	this->update_pc();
 	std::cout << "New PC value is " << this->cpu->getPC() << "\n" << std::endl;
 	std::cout << "=====================================\n" << std::endl;
@@ -35,6 +36,7 @@ bool Jump::validate(std::vector<std::string> params, int line){
 		}
 		this->jump_address = operands.at(0);
 	}
+	this->line = line;
 	return true;
 }
 

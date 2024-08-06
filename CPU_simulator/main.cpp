@@ -20,22 +20,23 @@ int main(int argc, char* argv[]) {
 
         // Create CPU instances with different starting PC values
         std::shared_ptr<CPU> cpu1 = std::make_shared<CPU>(rom, ram);
-        cpu1->setPC(0); // Start at PC = 0
+        //cpu1->setPC(0); // Start at PC = 0
 
-        std::shared_ptr<CPU> cpu2 = std::make_shared<CPU>(rom, ram);
-        cpu2->setPC(5); // Start at PC = 5 (or any other value)
+        //std::shared_ptr<CPU> cpu2 = std::make_shared<CPU>(rom, ram);
+        //cpu2->setPC(5); // Start at PC = 5 (or any other value)
         
-        Runner::execute(rom, argv, cpu2);
-        for (int i = 0; i < 5; i++)
-        	rom->instructions[i]->cpu = cpu1;
+        Runner::execute(rom, argv, cpu1);
+        //for (int i = 0; i < 5; i++)
+        //	rom->instructions[i]->cpu = cpu1;
 
         // Launch CPUs using std::async
-        auto future1 = std::async(std::launch::async, startCPU, cpu1);
-        auto future2 = std::async(std::launch::async, startCPU, cpu2);
+        //auto future1 = std::async(std::launch::async, startCPU, cpu1);
+        //auto future2 = std::async(std::launch::async, startCPU, cpu2);
 
         // Wait for futures to complete
-        future1.get();
-        future2.get();
+        //future1.get();
+        //future2.get();
+        cpu1->execute();
 
     } catch (const InstructionValidationException& ex) {
         std::cerr << "Error: " << ex.what() << std::endl;

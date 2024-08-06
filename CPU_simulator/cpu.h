@@ -15,7 +15,6 @@ public:
     void fetch_instructions();
     std::shared_ptr<RAM> getRAM();
     std::shared_ptr<ROM> getROM();
-
 private:
     int PC;
     bool halted;
