@@ -2,7 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "memory.h"
+#include <mutex>
 
 class RAM : public Memory<int>{
 public:
@@ -11,5 +13,6 @@ public:
     void write(int address, int data);
 private:
     std::unique_ptr<int> data[MAX_SIZE];
+    std::unique_ptr<std::mutex> mutexes[MAX_SIZE];
 };
 
